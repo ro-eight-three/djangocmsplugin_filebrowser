@@ -1,0 +1,20 @@
+{% load static cms_tags sekizai_tags %}
+
+<div class="filebrowser">
+  <div class="panel panel-default">
+    <span>Listing for: </span>
+    <strong class="filebrowser-cwd"></strong>
+    <a href="#" class="filebrowser-up"><span>Up</span></a>
+  </div>
+  <div class="list-group filebrowser-list">
+    <a class="list-group-item template hidden filebrowser-item-file list-group-item-warning" href="#"></a>
+    <a class="list-group-item template hidden filebrowser-item-folder list-group-item-info" href="#"></a>
+  </div>
+</div>
+{% addtoblock "js" %}
+  <script src="{% static 'cmsplugin_filebrowser/scripts.js' %}" type="text/javascript"></script>
+  <script src="{% static 'cmsplugin_filebrowser/mhajax.js' %}" type="text/javascript"></script>
+  <script type="text/javascript">
+    cmsplugin_filebrowser.init("{% url 'filebrowser-restapi:list' '/' %}");
+  </script>
+{% endaddtoblock %}
